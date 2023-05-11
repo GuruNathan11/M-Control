@@ -1,0 +1,80 @@
+export const FdData = [
+  {
+    bank: 'Punjab & Sindi Bank',
+    rate: 8.0,
+    tenor: '222 days',
+    senior: 8.5,
+  },
+  {
+    bank: 'Central Bank Of India',
+    rate: 7.35,
+    tenor: '444 days',
+    senior: 7.85,
+  },
+  {
+    bank: 'Union Bank',
+    rate: 7.3,
+    tenor: '800 days',
+    senior: 7.8,
+  },
+  {
+    bank: 'Punjab National Bank',
+    rate: 7.25,
+    tenor: '868 days',
+    senior: 7.75,
+  },
+  {
+    bank: 'Canara Bank',
+    rate: 7.15,
+    tenor: '400 days',
+    senior: 7.65,
+  },
+  {
+    bank: 'UCO Bank',
+    rate: 7.15,
+    tenor: '666 days',
+    senior: 7.25,
+  },
+  {
+    bank: 'State Bank Of India',
+    rate: 7.1,
+    tenor: '400 days',
+    senior: 7.6,
+  },
+  {
+    bank: 'Bank Of Baroda',
+    rate: 7.05,
+    tenor: '399 days',
+    senior: 7.55,
+  },
+  {
+    bank: 'Bank Of India',
+    rate: 7.05,
+    tenor: '444 days',
+    senior: 7.55,
+  },
+  {
+    bank: 'Indian Bank',
+    rate: 7.0,
+    tenor: '555 days',
+    senior: 7.5,
+  },
+  {
+    bank: 'Post Office Term Deposits',
+    rate: 7.0,
+    tenor: '6 years',
+    senior: 7.0,
+  },
+  {
+    bank: 'Indian Oversease Bank',
+    rate: 7.0,
+    tenor: '444 days',
+    senior: 7.5,
+  },
+  {
+    bank: 'Bank Of Maharashtra',
+    rate: 7.0,
+    tenor: '200 days',
+    senior: 7.5,
+  },
+]

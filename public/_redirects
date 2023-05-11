@@ -1,0 +1,14 @@
+/*    /index.html   200
+/about   /about-us   301
+/dashboard   /index.html   301
+/profile/admin-configuration    /profile/admin-configuration  301
+/profile/stock-configuration    /profile/stock-configuration  301
+/fdrates/foreignbank     /fdrates/foreignbank     301
+/fdrates/govtpobank      /fdrates/govtpobank      301
+/fdrates/nbfc      /fdrates/nbfc   301
+/fdrates/pvtbank     /fdrates/pvtbank   301
+/fdrates/smfbank     /fdrates/smfbank     301
+/fdrates/coopbank     /fdrates/coopbank    301
+/profile/portfolio    /profile/portfolio    301
+/login   /login   301
+/register    /register   301
