@@ -21,7 +21,7 @@ function BoardMeetings() {
   const handleCreate = async () => {
     try {
       // Check if the company name already exists
-      const response = await axios.get(`https://elon-rights.onrender.com/config/rights/add`)
+      const response = await axios.get(`http://eloon-rights.us-east-1.elasticbeanstalk.com/config/rights/add`)
       if (response.data.length > 0) {
         alert('Company Name already exists!')
         return
@@ -57,7 +57,7 @@ function BoardMeetings() {
         return
       }
   
-      await axios.post('https://elon-rights.onrender.com/config/rights/add', {
+      await axios.post('http://eloon-rights.us-east-1.elasticbeanstalk.com/config/rights/add', {
         companyName,
         rightsRatio,
         fv,
@@ -96,7 +96,7 @@ function BoardMeetings() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete('https://elon-rights.onrender.com/config/rights/' + id)
+      await axios.delete('http://eloon-rights.us-east-1.elasticbeanstalk.com/config/rights/' + id)
       console.log('Deleted Successfully')
       getApi()
     } catch (error) {
@@ -105,7 +105,7 @@ function BoardMeetings() {
   }
   const getApi = async () => {
     await axios
-      .get('https://elon-rights.onrender.com/config/rights/get-all')
+      .get("http://eloon-rights.us-east-1.elasticbeanstalk.com/config/rights/get-all")
       .then((response) => {
         const r = response.data.data
         setApiData(r)

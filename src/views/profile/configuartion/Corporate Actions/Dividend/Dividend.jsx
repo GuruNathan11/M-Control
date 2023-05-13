@@ -17,7 +17,7 @@ function Dividend() {
   const handleCreate = async () => {
     try {
       // Check if the company name already exists
-      const response = await axios.get(`https://elon-dividend.onrender.com/config/dividend/get-all`)
+      const response = await axios.get(`http://elon-dividends.us-east-2.elasticbeanstalk.com/config/dividend/get-all`)
       if (response.data.length > 0 && response.data[0].companyName === companyName) {
         alert('Company Name already exists!')
         // console.log("data",companyName);
@@ -59,7 +59,7 @@ function Dividend() {
         return
       }
       
-      await axios.post('https://elon-dividend.onrender.com/config/dividend/add', {
+      await axios.post('http://elon-dividends.us-east-2.elasticbeanstalk.com/config/dividend/add', {
         companyName,
         type,
         fv,
@@ -101,7 +101,7 @@ function Dividend() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete('https://elon-dividend.onrender.com/config/dividend/' + id)
+      await axios.delete('http://elon-dividends.us-east-2.elasticbeanstalk.com/config/dividend/' + id)
       console.log('Deleted Successfully')
       getApi()
     } catch (error) {
@@ -110,7 +110,7 @@ function Dividend() {
   }
   const getApi = async () => {
     await axios
-      .get('https://elon-dividend.onrender.com/config/dividend/get-all')
+      .get('http://elon-dividends.us-east-2.elasticbeanstalk.com/config/dividend/get-all')
       .then((response) => {
         const r = response.data.data
         setApiData(r)

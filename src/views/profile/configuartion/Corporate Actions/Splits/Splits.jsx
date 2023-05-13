@@ -25,7 +25,7 @@ function Splits() {
         }
         else{
       try {
-        await axios.post('https://elon-splits.onrender.com/config/splits/add', {
+        await axios.post('http://elon-splits.us-east-1.elasticbeanstalk.com/config/splits/add', {
           companyName,
           oldFV,
           newFV,
@@ -51,7 +51,7 @@ function Splits() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete('https://elon-splits.onrender.com/config/splits/' + id)
+      await axios.delete('http://elon-splits.us-east-1.elasticbeanstalk.com/config/splits/' + id)
       console.log('Deleted Successfully')
       getApi()
     } catch (error) {
@@ -60,7 +60,7 @@ function Splits() {
   }
   const getApi = async () => {
     await axios
-      .get('https://elon-splits.onrender.com/config/splits/get-all')
+      .get('http://elon-splits.us-east-1.elasticbeanstalk.com/config/splits/get-all')
       .then((response) => {
         const r = response.data.data
         setApiData(r)

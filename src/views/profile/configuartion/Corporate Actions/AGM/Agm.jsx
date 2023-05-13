@@ -33,7 +33,7 @@ function Agm() {
       alert('Please Enter Purpose Details')
     } else {
       try {
-        await axios.post('https://agm-egms.onrender.com/config/agm/add', {
+        await axios.post('http://elon-agm.us-east-1.elasticbeanstalk.com/config/agm/add', {
           companyName,
           date,
           agenda,
@@ -65,7 +65,7 @@ function Agm() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete('https://agm-egms.onrender.com/config/agm/' + id)
+      await axios.delete('http://elon-agm.us-east-1.elasticbeanstalk.com/config/agm/' + id)
       console.log('Deleted Successfully')
       getApi()
     } catch (error) {
@@ -74,7 +74,7 @@ function Agm() {
   }
   const getApi = async () => {
     await axios
-      .get('https://agm-egms.onrender.com/config/agm/get-all')
+      .get("http://elon-agm.us-east-1.elasticbeanstalk.com/config/agm/get-all")
       .then((response) => {
         const r = response.data.data
         setApiData(r)

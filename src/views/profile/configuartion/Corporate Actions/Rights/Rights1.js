@@ -12,7 +12,7 @@ function Rights1() {
 
   const fetchData = async () => {
     const response = await fetch(
-      "https://elon-rights.onrender.com/config/rights/get-all"
+      "http://eloon-rights.us-east-1.elasticbeanstalk.com/config/rights/get-all"
     );
     const data = await response.json();
     setData(data.data);

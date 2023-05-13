@@ -12,7 +12,7 @@ function App() {
 
   const fetchData = async () => {
     const response = await fetch(
-      "https://board-meetings.onrender.com/config/board_meeting/get-all"
+      "http://elon-jwt.us-east-1.elasticbeanstalk.com/config/board_meeting/get-all"
     );
     const data = await response.json();
     setData(data.data);

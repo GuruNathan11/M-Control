@@ -12,7 +12,7 @@ function App() {
 
   const fetchData = async () => {
     const response = await fetch(
-      "https://elon-splits.onrender.com/config/splits/get-all"
+      "http://elon-splits.us-east-1.elasticbeanstalk.com/config/splits/get-all"
     );
     const data = await response.json();
     setData(data.data);
