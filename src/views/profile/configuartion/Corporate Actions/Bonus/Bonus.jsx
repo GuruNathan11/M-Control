@@ -28,7 +28,7 @@ function Bonus() {
           alert('Please Enter ex_bonus Details')
         }else{
       try {
-        await axios.post('http://elon-bonus-api.us-east-1.elasticbeanstalk.com/config/bonus/add', {
+        await axios.post('https://eloon-bonus.onrender.com/config/bonus/add', {
           companyName,
           bonusRatio,
           announcement,
@@ -57,7 +57,7 @@ function Bonus() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete('http://elon-bonus-api.us-east-1.elasticbeanstalk.com/config/bonus/' + id)
+      await axios.delete('https://eloon-bonus.onrender.com/config/bonus/' + id)
       console.log('Deleted Successfully')
       getApi()
     } catch (error) {
@@ -66,7 +66,7 @@ function Bonus() {
   }
   const getApi = async () => {
     await axios
-      .get("http://elon-bonus-api.us-east-1.elasticbeanstalk.com/config/bonus/get-all")
+      .get("https://eloon-bonus.onrender.com/config/bonus/get-all")
       .then((response) => {
         const r = response.data.data
         setApiData(r)

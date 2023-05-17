@@ -12,7 +12,7 @@ function App() {
 
   const fetchData = async () => {
     const response = await fetch(
-      "http://elon-agm.us-east-1.elasticbeanstalk.com/config/agm/get-all"
+      "https://elon-agm.onrender.com/config/agm/get-all"
     );
     const data = await response.json();
     setData(data.data);

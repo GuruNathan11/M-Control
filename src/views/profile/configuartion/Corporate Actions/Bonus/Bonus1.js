@@ -12,7 +12,7 @@ function App() {
 
   const fetchData = async () => {
     const response = await fetch(
-      "http://elon-bonus-api.us-east-1.elasticbeanstalk.com/config/bonus/get-all"
+      "https://eloon-bonus.onrender.com/config/bonus/get-all"
     );
     const data = await response.json();
     setData(data.data);

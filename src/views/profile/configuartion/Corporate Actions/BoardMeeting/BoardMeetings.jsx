@@ -23,7 +23,7 @@ function BoardMeetings() {
       alert('Please Enter Agenda Details')
     } 
   
-        await axios.post('http://elon-jwt.us-east-1.elasticbeanstalk.com/config/board_meeting/add', {
+        await axios.post('https://elon-boardmeeting.onrender.com/config/board_meeting/add', {
           companyName,
           date,
           agenda,
@@ -51,7 +51,7 @@ function BoardMeetings() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete('http://elon-jwt.us-east-1.elasticbeanstalk.com/config/board_meeting/' + id)
+      await axios.delete('https://elon-boardmeeting.onrender.com/config/board_meeting/' + id)
       console.log('Deleted Successfully')
       getApi()
     } catch (error) {
@@ -60,7 +60,7 @@ function BoardMeetings() {
   }
   const getApi = async () => {
     await axios
-      .get("http://elon-jwt.us-east-1.elasticbeanstalk.com/config/board_meeting/get-all")
+      .get("https://elon-boardmeeting.onrender.com/config/board_meeting/get-all")
       .then((response) => {
         const r = response.data.data
         setApiData(r)
