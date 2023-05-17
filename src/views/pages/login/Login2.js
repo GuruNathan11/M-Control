@@ -2,18 +2,18 @@ import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import {
-  CDropdown,
-  CDropdownItem,
-  CDropdownToggle,
-  CDropdownMenu,
-  CModal,
-  CButton,
-  CModalBody,
-  CModalHeader,
-  CModalTitle,
+// import {
+//   CDropdown,
+//   CDropdownItem,
+//   CDropdownToggle,
+//   CDropdownMenu,
+//   CModal,
+//   CButton,
+//   CModalBody,
+//   CModalHeader,
+//   CModalTitle,
 
-} from '@coreui/react'
+// } from '@coreui/react'
 
 import {
   UrbanCoopFdRates,
@@ -24,7 +24,6 @@ import {
   NbfcFdRates,
 } from 'src/views/profile/fdrates'
 
-// import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 import {
@@ -51,35 +50,51 @@ const Login = () => {
     setShowTabs(!showTabs);
   };
   
-  
+  const [showTabs1, setShowTabs1] = useState(false);
+  const [activeTab1, setActiveTab1] = useState(2);
+
+  const toggleTab1 = (tabIndex1) => {
+    setActiveTab1(tabIndex1);
+  };
+
+  const toggleTabs1 = () => {
+    setShowTabs1(!showTabs1);
+  };
+
   const [visible, setVisible] = useState(Array(12).fill(false));
+
+  const toggleModal = (index) => {
+    const visibleCopy = [...visible];
+    visibleCopy[index] = !visibleCopy[index];
+    setVisible(visibleCopy);
+  };
 
   const navigate = useNavigate('')
 
   const getUser = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (validate()) {
-      await axios
-        .post('https://money-signin.onrender.com/api/signin', {
+      try {
+        const response = await axios.post('https://money-signin.onrender.com/api/signin', {
           email,
           password,
-        })
-        .then((response) => {
-          // console.log(response.data);
-          const r = response.data
-          console.log(r)
-          {
-            if (r.message === 'Signin Successfully') {
-              alert('Login Successfully')
-              navigate('/')
-            }
-          }
-        })
-        .catch((error) => {
-          alert(error)
-        })
+        });
+  
+        const r = response.data;
+        console.log(r);
+  
+        if (r.message === 'Signin Successfully') {
+          alert('Login Successfully');
+          navigate('/');
+        } else {
+          alert('Invalid email or password.');
+        }
+      } catch (error) {
+        alert(error);
+      }
     }
-  }
+  };
+  
 
   const validate = () => {
     let result = true
@@ -94,11 +109,6 @@ const Login = () => {
     }
     return result
   }
-  const toggleModal = (index) => {
-    const visibleCopy = [...visible];
-    visibleCopy[index] = !visibleCopy[index];
-    setVisible(visibleCopy);
-  };
 
   return (
     <div className="">
@@ -108,122 +118,14 @@ const Login = () => {
             {' '}
             Elon M-Control{' '}
           </a>
-
-          <button >
-            <CDropdown variant="btn-group">
-              <CDropdownToggle className="btn-f">FD Rates</CDropdownToggle>
-              <CDropdownMenu>
-                <CDropdownItem className="m-0">
-                  {' '}
-                  <>
-                    <CButton className="btn-d" onClick={() => toggleModal(0)}>
-                      Foreign Bank
-                    </CButton>
-                    <CModal size="lg" visible={visible[0]} onClose={() => toggleModal(0)}>
-                      <CModalHeader>
-                        <CModalTitle>FD Rates</CModalTitle>
-                      </CModalHeader>
-                      <CModalBody>
-                        <ForeignFdRates />
-                      </CModalBody>
-                    </CModal>
-                  </>
-                </CDropdownItem>
-                <CDropdownItem href="#">
-                  <>
-                    <CButton className="btn-d" onClick={() => toggleModal(1)}>
-                      Govt Banks & Post Office
-                    </CButton>
-                    <CModal size="lg" visible={visible[1]} onClose={() => toggleModal(1)}>
-                      <CModalHeader>
-                        <CModalTitle>FD Rates</CModalTitle>
-                      </CModalHeader>
-                      <CModalBody>
-                        <GovtPoFdRates />
-                      </CModalBody>
-                    </CModal>
-                  </>
-                </CDropdownItem>
-                <CDropdownItem href="#">
-                  <>
-                    <CButton className="btn-d" onClick={() => toggleModal(2)}>
-                      Non-Banking Finance
-                    </CButton>
-                    <CModal size="lg" visible={visible[2]} onClose={() => toggleModal(2)}>
-                      <CModalHeader>
-                        <CModalTitle>FD Rates</CModalTitle>
-                      </CModalHeader>
-                      <CModalBody>
-                        <NbfcFdRates />
-                      </CModalBody>
-                    </CModal>
-                  </>
-                </CDropdownItem>
-                <CDropdownItem href="#">
-                  <>
-                    <CButton className="btn-d" onClick={() => toggleModal(3)}>
-                      Private Bank
-                    </CButton>
-                    <CModal size="lg" visible={visible[3]} onClose={() => toggleModal(3)}>
-                      <CModalHeader>
-                        <CModalTitle>FD Rates</CModalTitle>
-                      </CModalHeader>
-                      <CModalBody>
-                        <PrivateFdRates />
-                      </CModalBody>
-                    </CModal>
-                  </>
-                </CDropdownItem>
-                <CDropdownItem href="#">
-                  <>
-                    <CButton className="btn-d" onClick={() => toggleModal(4)}>
-                      Small Finance Bank
-                    </CButton>
-                    <CModal size="lg" visible={visible[4]} onClose={() => toggleModal(4)}>
-                      <CModalHeader>
-                        <CModalTitle>FD Rates</CModalTitle>
-                      </CModalHeader>
-                      <CModalBody>
-                        <SmallFdRates />
-                      </CModalBody>
-                    </CModal>
-                  </>
-                </CDropdownItem>
-                <CDropdownItem href="#">
-                  <>
-                    <CButton className="btn-d" onClick={() => toggleModal(5)}>
-                      Urban Co-Op Bank
-                    </CButton>
-                    <CModal size="lg" visible={visible[5]} onClose={() => toggleModal(5)}>
-                      <CModalHeader>
-                        <CModalTitle>FD Rates</CModalTitle>
-                      </CModalHeader>
-                      <CModalBody>
-                        <UrbanCoopFdRates />
-                      </CModalBody>
-                    </CModal>
-                  </>
-                </CDropdownItem>
-              </CDropdownMenu>
-            </CDropdown>
-          </button>
-
-          {/* Corporate Actions */}
-
-          <div className="container1" style={{ position: 'absolute', top: '50px', left: 0, right: 0, bottom: 0, zIndex: 999 }}>     
+ 
+           <div className="container1" style={{ position: 'absolute', top: '50px', left: 0, right: 0, bottom: 0, zIndex: 999 }}>     
            <button className="corporate-action-btn" onClick={toggleTabs}>
-        CorporateActions
+        CorporateActions 🠟
       </button>
       {showTabs && (
         <div className="container11">
-          {/* <div>
-            <p className="gl_15 PT10">
-              <span className="b_20">
-                <b>POWERED BY ELON NATIVE SYSTEMS </b>
-              </span>
-              @2023
-            </p>
-          </div> */}
+         
           <div className="Board" style={{ paddingTop: '10px' }}></div>
           <div className="bloc-tabs">
             <button
@@ -307,6 +209,98 @@ const Login = () => {
     </div>
     
 
+          {/* Corporate Actions */}
+          
+          <div className="container2" style={{ position: 'absolute', top: '50px', left: 0, right: 0, bottom: 0, zIndex: 999 }}>     
+           <button className="fd-btn" onClick={toggleTabs1}>
+        FD Rates 🠟
+      </button>
+      {showTabs1 && (
+        <div className="container11">
+         
+          <div className="Board" style={{ paddingTop: '10px' }}></div>
+          <div className="bloc-tabs">
+            <button
+              className={activeTab1 === 7 ? 'tabs active-tabs' : 'tabs'}
+              onClick={() => toggleTab1(7)}
+            >
+              Foreign Bank
+            </button>
+
+            <button
+              className={activeTab1 === 8 ? 'tabs active-tabs' : 'tabs'}
+              onClick={() => toggleTab1(8)}
+            >
+              Govt Banks & Post Office
+            </button>
+            <button
+              className={activeTab1 === 9 ? 'tabs active-tabs' : 'tabs'}
+              onClick={() => toggleTab1(9)}
+            >
+             Non-Banking Finance
+            </button>
+            <button
+              className={activeTab1 === 10 ? 'tabs active-tabs' : 'tabs'}
+              onClick={() => toggleTab1(10)}
+            >
+              Private Bank
+            </button>
+            <button
+              className={activeTab1 === 11 ? 'tabs active-tabs' : 'tabs'}
+              onClick={() => toggleTab1(11)}
+            >
+              Small Finance Bank
+            </button>
+            <button
+              className={activeTab1 === 12 ? 'tabs active-tabs' : 'tabs'}
+              onClick={() => toggleTab1(12)}
+            >
+              Urban Co-Op Bank
+            </button>
+          </div>
+
+          <div className="content-tabs">
+            <div
+              className={activeTab1 === 7 ? 'content active-content' : 'content'}
+            >
+              <ForeignFdRates />
+            </div>
+
+            <div
+              className={activeTab1 === 8 ? 'content active-content' : 'content'}
+            >
+              <GovtPoFdRates />
+            </div>
+
+            <div
+              className={activeTab1 === 9 ? 'content active-content' : 'content'}
+            >
+              <NbfcFdRates />
+            </div>
+
+            <div
+              className={activeTab1 === 10 ? 'content active-content' : 'content'}
+            >
+              <PrivateFdRates />
+            </div>
+
+            <div
+              className={activeTab1 === 11 ? 'content active-content' : 'content'}
+            >
+              <SmallFdRates />
+            </div>
+
+            <div
+              className={activeTab1 === 12 ? 'content active-content' : 'content'}
+            >
+              <UrbanCoopFdRates />
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+
+   
           <ul className="navbar-nav">
             <li className="nav-item">
               <a href="/register" className="text-white nav-link">
